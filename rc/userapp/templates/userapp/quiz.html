@@ -15,7 +15,7 @@
         {% csrf_token %}
         Attempt 1: <input type = 'number' name = 'attempt1' id='attempt1' ><br><br>
         Attempt 2: <input type = 'number' name = 'attempt2' id='attempt2'><br><br>
-        <input type = 'submit' value = 'Submit' name = 'submit'><br><br>
+        <input type = 'submit' value = 'Submit' name = 'submit' onclick="myFunc()"><br><br>
     </form>
     </fieldset>
     <h1>Your current score is {{score}}.</h1>
@@ -26,12 +26,15 @@
     </form>
     <script type="text/javascript">
         if({{abc}}==0){
+            let store= document.getElementById("attempt1").value;
             document.getElementById("attempt2").disabled = true;
             document.getElementById("attempt2").style.backgroundColor = "#b6bdd0";
             }
         else if({{abc}}==1){
+            
+            let val= {{attempt1}}
+            document.getElementById("attempt1").value = val; 
             document.getElementById("attempt1").disabled = true;
-            //document.getElementById("attempt1").value = {{attempt1}}; 
             document.getElementById("attempt1").style.borderColor = "red";
             document.getElementById("attempt1").style.backgroundColor = "#b6bdd0";
         
