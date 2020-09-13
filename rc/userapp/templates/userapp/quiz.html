@@ -18,14 +18,24 @@
         <input type = 'submit' value = 'Submit' name = 'submit'><br><br>
     </form>
     </fieldset>
-    <h1>Your current score is {{abc}}.</h1>
+    <h1>Your current score is {{score}}.</h1>
     <p>{{user_to_update.decision}}</p>
     <form method = 'post' action = '{% url "logout" %}'>
         {% csrf_token %}
         <input type = 'submit' value = 'Logout' name = 'submit'>
     </form>
     <script type="text/javascript">
+        if({{abc}}==0){
+            document.getElementById("attempt2").disabled = true;
+            document.getElementById("attempt2").style.backgroundColor = "#b6bdd0";
+            }
+        else if({{abc}}==1){
+            document.getElementById("attempt1").disabled = true;
+            //document.getElementById("attempt1").value = {{attempt1}}; 
+            document.getElementById("attempt1").style.borderColor = "red";
+            document.getElementById("attempt1").style.backgroundColor = "#b6bdd0";
         
+        }
        
     </script>
     </body>
